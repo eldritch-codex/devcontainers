@@ -1,56 +1,36 @@
 #!/usr/bin/env bash
-# Install the common Linux C++ development and desktop windowing stack.
-# This image supports building GLFW applications with both X11 and Wayland
-# backends. Runtime display and GPU access are configured by consumers.
+# Common C++ and desktop development packages.
 
 set -euo pipefail
 
 pacman -Syyu --noconfirm
 
-# Keep the package groups explicit. Apart from making the image easier to
-# review, this makes it clear which dependencies belong in a future
-# project-specific image instead of silently growing the shared base.
 packages=(
-    # Container and debugging utilities:
-    # sudo for controlled package/tool installation inside the disposable
-    # non-root development container; GDB provides native debugging.
+    # Base utilities and debugging.
     sudo
     gdb
+    patch
 
-    # C++ toolchain and build orchestration:
-    # Clang and LLD compile/link C++ projects; CMake and Ninja configure and
-    # build the projects used by Nodens and Nyar.
+    # C++ toolchain and build tools.
     clang
+    llvm
     lld
     cmake
     ninja
+    pkgconf
 
-    # Source control and download support:
-    # Git is required for project work and FetchContent dependencies; OpenSSH
-    # provides the SSH transport for GitHub remotes. Curl is used by the image
-    # build scripts to fetch pinned GitHub releases, and ca-certificates enables
-    # TLS verification for those HTTPS downloads.
+    # Source control and downloads.
     git
     openssh
     curl
     ca-certificates
 
-    # Build metadata support:
-    # pkgconf assists CMake dependency discovery while configuring GLFW and
-    # other desktop dependencies.
-    pkgconf
-
-    # OpenGL and GLFW:
-    # Mesa and libglvnd provide Linux OpenGL userspace support. GLFW is a
-    # shared window/input dependency and is required by Nyar's current
-    # find_package(glfw3 REQUIRED) configuration.
+    # OpenGL and GLFW.
     mesa
     libglvnd
     glfw
 
-    # X11 development support:
-    # These headers and libraries allow GLFW to build its X11 backend and are
-    # also required by Nodens' current ImGui CMake integration.
+    # X11 development.
     xorgproto
     libx11
     libxrandr
@@ -60,18 +40,12 @@ packages=(
     libxext
     libxfixes
 
-    # Wayland development support:
-    # These packages allow GLFW to build its Wayland backend. GLFW can then
-    # select X11 or Wayland at runtime according to the host session.
+    # Wayland development.
     wayland
     wayland-protocols
     libxkbcommon
 
-
-    # Vulkan development and diagnostics:
-    # Headers and the loader are needed to compile/link Vulkan applications;
-    # validation layers, Vulkan tools, and SPIR-V tools support development
-    # diagnostics and shader inspection for both Nodens and Nyar.
+    # Vulkan development and diagnostics.
     vulkan-headers
     vulkan-icd-loader
     vulkan-validation-layers
