@@ -43,7 +43,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/eldritchcodex/arch-dev
+          images: ghcr.io/eldritch-codex/arch-dev
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}

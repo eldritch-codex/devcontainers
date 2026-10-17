@@ -9,7 +9,7 @@ Wayland support are compiled into the desktop stack; the active display backend
 is selected at runtime by GLFW and the host session.
 
 The image is published as
-`ghcr.io/eldritchcodex/arch-dev:main`, is Linux-only, and currently
+`ghcr.io/eldritch-codex/arch-dev:main`, is Linux-only, and currently
 targets `linux/amd64`. GPU devices, display sockets, and session-specific
 environment variables are runtime concerns configured by each consuming
 repository's `devcontainer.json`.
