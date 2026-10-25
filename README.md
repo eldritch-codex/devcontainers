@@ -102,3 +102,7 @@ dispatch. Make the GHCR package public when anonymous pulls are needed.
 Nodens, Nyar, and Template-NodensApp keep their own source repositories and
 build configurations. They use this shared toolchain image and do not publish
 project-specific images unless a project later needs unique dependencies.
+
+## AI assistance
+
+The maintainer uses coding agents on these images and configurations: Claude Code and the maintainer's own agent, Armitage. Commits carry no co-author or AI attribution trailers, because the maintainer is responsible for every commit. This section is where the use of agents is disclosed.
