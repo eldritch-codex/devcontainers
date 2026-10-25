@@ -27,4 +27,12 @@ RUN chmod +x /tmp/install-git-prompt.sh \
 
 COPY --chown=eldritchcodex:eldritchcodex .bashrc /home/eldritchcodex/.bashrc
 
+# Defaults for CMake so a plain `cmake -S . -B build` works: Nodens needs Clang (GCC
+# cannot build it) and Ninja (C++ modules), and tooling wants the compile database.
+# Projects can still override any of them on the command line.
+ENV CC=clang \
+    CXX=clang++ \
+    CMAKE_GENERATOR=Ninja \
+    CMAKE_EXPORT_COMPILE_COMMANDS=ON
+
 USER eldritchcodex
