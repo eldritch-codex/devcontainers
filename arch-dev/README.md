@@ -14,6 +14,8 @@ targets `linux/amd64`. GPU devices, display sockets, and session-specific
 environment variables are runtime concerns configured by each consuming
 repository's `devcontainer.json`.
 
+CMake defaults are set for a plain `cmake -S . -B build`: Clang as the C and C++ compiler (`CC`, `CXX`), Ninja as the generator (`CMAKE_GENERATOR`) and an exported compile database (`CMAKE_EXPORT_COMPILE_COMMANDS`). Doxygen and capstone are installed for the optional `nodens-docs` and Tracy profiler targets.
+
 NVIDIA hosts require a working host driver and the
 [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 Intel/AMD hosts use `/dev/dri` at runtime.

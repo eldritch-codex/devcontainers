@@ -19,6 +19,10 @@ packages=(
     ninja
     pkgconf
 
+    # Optional build targets: API docs (Doxygen) and the Tracy profiler (capstone).
+    doxygen
+    capstone
+
     # Source control and downloads.
     git
     openssh
