@@ -15,6 +15,11 @@ RUN chmod +x /tmp/install-slang.sh \
     && /tmp/install-slang.sh \
     && rm /tmp/install-slang.sh
 
+COPY scripts/install-codelldb.sh /tmp/install-codelldb.sh
+RUN chmod +x /tmp/install-codelldb.sh \
+    && /tmp/install-codelldb.sh \
+    && rm /tmp/install-codelldb.sh
+
 COPY scripts/create-user.sh /tmp/create-user.sh
 RUN chmod +x /tmp/create-user.sh \
     && /tmp/create-user.sh eldritchcodex \
